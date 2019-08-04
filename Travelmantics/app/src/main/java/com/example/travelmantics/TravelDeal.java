@@ -7,7 +7,11 @@ public class TravelDeal {
     private String price;
     private String imageUrl;
 
-    public TravelDeal( String title, String description, String price, String imageUrl) {
+    public TravelDeal() {
+
+    }
+
+    public TravelDeal(String title, String description, String price, String imageUrl) {
 
         this.setTitle(title);
         this.setDescription(description);
