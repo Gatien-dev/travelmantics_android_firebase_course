@@ -15,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "731315047245-3gbqgb8os7v8iu7hoj4atkqr1hndelb0.apps.googleusercontent.com",
+          "client_id": "731315047245-7phdmgb22ls3vo72uc5jaj1ohb4icl9s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.travelmantics",
+            "certificate_hash": "6df32b8d62401362be426ff23da4b4bb5f37eba9"
+          }
+        },
+        {
+          "client_id": "731315047245-r2uhgnu2gusq0akd22ud8v6ts90p8r24.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.travelmantics",

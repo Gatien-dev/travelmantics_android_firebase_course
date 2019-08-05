@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -26,10 +28,11 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
     private  DatabaseReference mDatabaseReference;
     private  ChildEventListener mChildListener;
     private  ArrayList<TravelDeal> deals;
+    private ImageView imageDeal;
 
     public DealAdapter(){
 
-        FirebaseUtil.openFbReference("traveldeals");
+        //FirebaseUtil.openFbReference("traveldeals");
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
         mDatabaseReference = FirebaseUtil.mDatabaseReference;
         deals=FirebaseUtil.mDeals;
@@ -95,14 +98,21 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
             tvTitle=itemView.findViewById(R.id.tvTitle);
             tvPrice=itemView.findViewById(R.id.tvPrice);
             tvDescription=itemView.findViewById(R.id.tvDescription);
+            imageDeal=itemView.findViewById(R.id.imageDeal);
             itemView.setOnClickListener(this);
         }
         public void bind(TravelDeal deal){
             tvTitle.setText(deal.getTitle());
             tvDescription.setText(deal.getDescription());
             tvPrice.setText(deal.getPrice());
+            showImage(deal.getImageUrl());
         }
-
+private void showImage(String url){
+            if(url!=null && !url.isEmpty()){
+                Picasso.get().load(url)
+                        .resize(160,160).centerCrop().into(imageDeal);
+            }
+}
         @Override
         public void onClick(View view) {
             int position=getAdapterPosition();
